@@ -1,27 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-family: "Poppins", sans-serif;
 }
+
 body {
-  padding: 0%;
+  padding: 0;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   background-color: rgb(58, 190, 190);
   padding: 10%;
 }
+
 .top-head {
   text-align: center;
   font-size: 30px;
   margin-top: 10px;
 }
+
 .devinfo {
   text-align: center;
   font-weight: 500;
 }
+
 .devinfo a {
   text-decoration: none;
 }
@@ -32,8 +38,9 @@ select {
   margin: 10px;
   font-size: large;
   border-radius: 50px;
-  border-style: none;
+  border: none;
 }
+
 .head {
   align-self: center;
   background-color: rgb(151, 101, 7);
@@ -45,16 +52,19 @@ select {
   width: 50%;
   border-radius: 40px;
 }
+
 label {
   font-size: 20px;
   font-weight: bold;
 }
+
 .result {
   font-size: 25px;
   align-self: center;
   text-align: end;
   font-weight: bold;
 }
+
 #calBtn {
   align-self: center;
   width: 40%;
@@ -71,6 +81,7 @@ label {
 #calBtn:hover {
   background-color: deepskyblue;
 }
+
 .table {
   width: auto;
   margin-top: 20px;
@@ -80,17 +91,20 @@ label {
   padding: 10px;
   border-radius: 30px;
 }
+
 .table td {
   border: 1px solid rgb(142, 142, 168);
   padding: 20px;
   font-weight: 600;
   border-radius: 20px;
 }
+
 #totalAmountPaid {
   font-size: larger;
   font-weight: 1000;
   color: green;
 }
+
 #Registation,
 #finalEstamp,
 #TotatCostLand {
@@ -100,15 +114,18 @@ label {
 @media (max-width: 767px) {
   body {
     width: auto;
-    padding: 0%;
+    padding: 0;
   }
+
   .table {
     width: auto;
   }
+
   .table td {
     padding: 5px;
     font-weight: 500;
   }
+
   .container {
     align-content: center;
     width: auto;
