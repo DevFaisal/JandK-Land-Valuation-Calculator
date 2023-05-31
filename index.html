@@ -22,22 +22,36 @@
         <option value="gift">Gift Deed</option>
       </select>
 
-      <label>Kanal Rate</label>
-      <input id="perKanalRate" type="text" />
-
       <h3 class="head">Write Land Info</h3>
 
-      <label>Kanal</label>
-      <input id="kanal" type="number" />
+      <label>Rate Per Kanal</label>
+      <input
+        id="perKanalRate"
+        type="number"
+        placeholder="Govt Rate of Per Kanal"
+        min="0"
+      />
 
-      <label>Marlas</label>
-      <input id="marla" type="number" />
+      <label>if Valuation</label>
+      <input
+        id="valuation-input"
+        type="text"
+        placeholder="Valuation of Trees or Structure"
+        min="0"
+        value="0"
+      />
+
+      <label>Kanal</label>
+      <input id="kanal" type="number" placeholder="Enter Kanal" min="0" />
+
+      <label>Marla</label>
+      <input id="marla" type="number" placeholder="Enter Marla" min="0" />
 
       <label>Sirsai</label>
-      <input id="sirsai" type="number" />
+      <input id="sirsai" type="number" placeholder="Enter Sirsai" min="0" />
 
       <label>Square Feet</label>
-      <input id="sqft" type="number" />
+      <input id="sqft" type="number" placeholder="Enter Square Feet" min="0" />
 
       <label for>Choose Gender</label>
       <select id="gender">
@@ -66,22 +80,33 @@
       <table class="table">
         <tr>
           <th>Total Cost of Land</th>
-          <th>eStamp</th>
-          <th>Registation Fees</th>
+          <th>Valuation</th>
+          <th>Consideration</th>
         </tr>
         <tr>
           <td id="TotatCostLand">0</td>
-          <td id="finalEstamp">0</td>
-          <td id="Registration">0</td>
+          <td id="valuation">0</td>
+          <td id="consideration">0</td>
         </tr>
       </table>
 
       <table class="table">
         <tr>
-          <th>Total Amount</th>
+          <th>eStamp</th>
+          <th>Registration Fees</th>
         </tr>
+
         <tr>
-          <td id="totalAmountPaid">0</td>
+          <td id="finalEstamp">0</td>
+          <td id="Registration">0</td>
+        </tr>
+
+        <tr>
+          <th colspan="3">Total Amount</th>
+        </tr>
+
+        <tr>
+          <td colspan="3" id="totalAmountPaid">0</td>
         </tr>
       </table>
     </div>

@@ -125,7 +125,9 @@ label {
 
 #Registation,
 #finalEstamp,
-#TotatCostLand {
+#TotatCostLand,
+#valuation,
+#consideration {
   font-weight: 700;
 }
 
@@ -141,9 +143,12 @@ label {
     width: auto;
   }
 
-  .table td {
-    padding: 5px;
-    font-weight: 500;
+  .table td,
+  .table th,
+  #Registration,
+  #finalEstamp {
+    padding: 2px;
+    margin: 0px;
   }
 
   .container {

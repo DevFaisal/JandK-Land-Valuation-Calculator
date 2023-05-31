@@ -13,6 +13,7 @@ let eStamp = 0;
 calBtn.addEventListener("click", function () {
     const landValues = calculateLandValues();
     const deedPercentages = getDeedPercentages(typeOfDeed.value, gender.value);
+    const valuation = parseInt(document.getElementById("valuation-input").value);
 
     result = landValues.kanalValue + landValues.marlaValue + landValues.sirsaiValue + landValues.sQftValue;
     let final = Math.floor(result);
@@ -22,8 +23,7 @@ calBtn.addEventListener("click", function () {
     let totalEstampValue = roundToNearestTen(eStamp);
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
 
-    updateDOM(landValues, final, totalEstampValue, registationFee);
-    console.log(landValues, final, totalEstampValue, registationFee);
+    updateDOM(landValues, final, valuation, totalEstampValue, registationFee);
 });
 
 //Function to calculate the land values
@@ -77,21 +77,24 @@ function getDeedPercentages(typeOfDeed, gender) {
 }
 
 //Function to update the DOM with calculated values
-function updateDOM(landValues, final, totalEstampValue, registationFee) {
+function updateDOM(landValues, final, valuation, totalEstampValue, registationFee) {
     document.getElementById("kanalOutput").innerText = kanal.value;
     document.getElementById("marlaOutput").innerText = marla.value;
     document.getElementById("sirsaiOutput").innerText = sirsai.value;
     document.getElementById("SqftOutput").innerText = sQft.value;
 
+
     let totalCostOfLand = formatNumberWithCommas(final);
     let finalEstamp = formatNumberWithCommas(totalEstampValue);
     let totalResgitationFee = formatNumberWithCommas(roundToNearestTen(registationFee));
-    let totalAmountToBePaid = roundToNearestTen(registationFee + totalEstampValue);
+    let totalAmountToBePaid = roundToNearestTen(registationFee + totalEstampValue + valuation);
 
     document.getElementById("TotatCostLand").innerText = totalCostOfLand;
+    document.getElementById("valuation").innerText = formatNumberWithCommas(valuation);
     document.getElementById("finalEstamp").innerText = finalEstamp;
     document.getElementById("Registration").innerText = totalResgitationFee;
     document.getElementById("totalAmountPaid").innerHTML = formatNumberWithCommas(totalAmountToBePaid);
+    document.getElementById("consideration").innerText = formatNumberWithCommas(final + valuation);
 }
 
 //Function to get the Ten if the number is near to Ten
