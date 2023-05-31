@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  padding: 0%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(58, 190, 190);
+  padding: 10%;
+}
+.top-head {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px;
+}
+.devinfo {
+  text-align: center;
+  font-weight: 500;
+}
+.devinfo a {
+  text-decoration: none;
+}
+
+input,
+select {
+  padding: 10px;
+  margin: 10px;
+  font-size: large;
+  border-radius: 50px;
+  border-style: none;
+}
+.head {
+  align-self: center;
+  background-color: rgb(151, 101, 7);
+  color: aliceblue;
+  margin: 3px;
+  text-align: center;
+  font-size: large;
+  padding: 1px;
+  width: 50%;
+  border-radius: 40px;
+}
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+.result {
+  font-size: 25px;
+  align-self: center;
+  text-align: end;
+  font-weight: bold;
+}
+#calBtn {
+  align-self: center;
+  width: 40%;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 40px;
+  background-color: rgb(26, 40, 49);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#calBtn:hover {
+  background-color: deepskyblue;
+}
+.table {
+  width: auto;
+  margin-top: 20px;
+  text-align: center;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 30px;
+}
+.table td {
+  border: 1px solid rgb(142, 142, 168);
+  padding: 20px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+#totalAmountPaid {
+  font-size: larger;
+  font-weight: 1000;
+  color: green;
+}
+#Registation,
+#finalEstamp,
+#TotatCostLand {
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  body {
+    width: auto;
+    padding: 0%;
+  }
+  .table {
+    width: auto;
+  }
+  .table td {
+    padding: 5px;
+    font-weight: 500;
+  }
+  .container {
+    align-content: center;
+    width: auto;
+    padding: 5%;
+  }
+}

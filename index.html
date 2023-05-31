@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Land Calculator</title>
+  </head>
+  <body>
+    <h2 class="top-head">Land Calculator</h2>
+    <h4 class="devinfo">
+      Developed by :
+      <a href="https://www.linkedin.com/in/dev-faisal/">Faisal Farooq</a>
+    </h4>
+    <div class="container">
+      <label>Kanal Rate</label>
+      <input id="perKanalRate" type="text" />
+      <h3 class="head">Write Land Info</h3>
+      <label>Kanal</label>
+      <input id="kanal" type="number" />
+      <label>Marlas</label>
+      <input id="marla" type="number" />
+      <label>Sirsai</label>
+      <input id="sirsai" type="number" />
+      <label>Square Feet</label>
+      <input id="sqft" type="number" />
+      <label for>Choose Gender</label>
+      <select id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Both">Both</option>
+      </select>
+      <button id="calBtn">Calculate</button>
+
+      <table class="table">
+        <tr>
+          <th>Kanal</th>
+          <th>Marlas</th>
+          <th>Sirsai</th>
+          <th>Square Feet</th>
+        </tr>
+        <tr>
+          <td id="kanalOutput">0</td>
+          <td id="marlaOutput">0</td>
+          <td id="sirsaiOutput">0</td>
+          <td id="SqftOutput">0</td>
+        </tr>
+      </table>
+      <table class="table">
+        <tr>
+          <th>Total Cost of Land</th>
+          <th>eStamp</th>
+          <th>Registation Fees</th>
+        </tr>
+        <tr>
+          <td id="TotatCostLand">0</td>
+          <td id="finalEstamp">0</td>
+          <td id="Registation">0</td>
+        </tr>
+      </table>
+      <table class="table">
+        <tr>
+          <th>Total Amount</th>
+        </tr>
+        <tr>
+          <td id="totalAmountPaid">0</td>
+        </tr>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
