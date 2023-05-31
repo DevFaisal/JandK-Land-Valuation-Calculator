@@ -23,6 +23,7 @@ calBtn.addEventListener("click", function () {
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
 
     updateDOM(landValues, final, totalEstampValue, registationFee);
+    console.log(landValues, final, totalEstampValue, registationFee);
 });
 
 //Function to calculate the land values
@@ -89,7 +90,7 @@ function updateDOM(landValues, final, totalEstampValue, registationFee) {
 
     document.getElementById("TotatCostLand").innerText = totalCostOfLand;
     document.getElementById("finalEstamp").innerText = finalEstamp;
-    document.getElementById("Registation").innerText = totalResgitationFee;
+    document.getElementById("Registration").innerText = totalResgitationFee;
     document.getElementById("totalAmountPaid").innerHTML = formatNumberWithCommas(totalAmountToBePaid);
 }
 

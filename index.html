@@ -9,38 +9,37 @@
     <title>Valuation Calculator</title>
   </head>
   <body>
-    <header>
-      <h2 class="top-head">Valuation Calculator</h2>
-      <h4 class="devinfo">
-        Developed by:
-        <a href="https://www.linkedin.com/in/dev-faisal/">Faisal Farooq</a>
-      </h4>
-    </header>
+    <h2 class="top-head">Valuation Calculator</h2>
+    <h4 class="devinfo">
+      Developed by :
+      <a href="https://www.linkedin.com/in/dev-faisal/">Faisal Farooq</a>
+    </h4>
     <div class="container">
-      <label for="typeOfDeed">Type of Deed</label>
+      <label>Type of Deed</label>
+
       <select id="typeOfDeed">
         <option value="sale">Conveyance/Sale deed</option>
         <option value="gift">Gift Deed</option>
       </select>
 
-      <label for="perKanalRate">Kanal Rate</label>
+      <label>Kanal Rate</label>
       <input id="perKanalRate" type="text" />
 
-      <h3 class="head">Land Information</h3>
+      <h3 class="head">Write Land Info</h3>
 
-      <label for="kanal">Kanal</label>
+      <label>Kanal</label>
       <input id="kanal" type="number" />
 
-      <label for="marla">Marlas</label>
+      <label>Marlas</label>
       <input id="marla" type="number" />
 
-      <label for="sirsai">Sirsai</label>
+      <label>Sirsai</label>
       <input id="sirsai" type="number" />
 
-      <label for="sqft">Square Feet</label>
+      <label>Square Feet</label>
       <input id="sqft" type="number" />
 
-      <label for="gender">Choose Gender</label>
+      <label for>Choose Gender</label>
       <select id="gender">
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -50,55 +49,42 @@
       <button id="calBtn">Calculate</button>
 
       <table class="table">
-        <thead>
-          <tr>
-            <th>Kanal</th>
-            <th>Marlas</th>
-            <th>Sirsai</th>
-            <th>Square Feet</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="kanalOutput">0</td>
-            <td id="marlaOutput">0</td>
-            <td id="sirsaiOutput">0</td>
-            <td id="SqftOutput">0</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Kanal</th>
+          <th>Marlas</th>
+          <th>Sirsai</th>
+          <th>Square Feet</th>
+        </tr>
+        <tr>
+          <td id="kanalOutput">0</td>
+          <td id="marlaOutput">0</td>
+          <td id="sirsaiOutput">0</td>
+          <td id="SqftOutput">0</td>
+        </tr>
       </table>
 
       <table class="table">
-        <thead>
-          <tr>
-            <th>Total Cost of Land</th>
-            <th>eStamp</th>
-            <th>Registration Fees</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="TotatCostLand">0</td>
-            <td id="finalEstamp">0</td>
-            <td id="Registration">0</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Total Cost of Land</th>
+          <th>eStamp</th>
+          <th>Registation Fees</th>
+        </tr>
+        <tr>
+          <td id="TotatCostLand">0</td>
+          <td id="finalEstamp">0</td>
+          <td id="Registration">0</td>
+        </tr>
       </table>
 
       <table class="table">
-        <thead>
-          <tr>
-            <th>Total Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="totalAmountPaid">0</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Total Amount</th>
+        </tr>
+        <tr>
+          <td id="totalAmountPaid">0</td>
+        </tr>
       </table>
     </div>
-
     <script src="/JS/script.js"></script>
   </body>
 </html>

@@ -16,8 +16,13 @@ body {
   background-color: rgb(58, 190, 190);
   padding: 10%;
 }
+.valName {
+  color: rgb(4, 170, 170);
+}
 
 .top-head {
+  display: flex;
+  justify-content: center;
   text-align: center;
   font-size: 30px;
   margin-top: 10px;
@@ -30,6 +35,8 @@ body {
 
 .devinfo a {
   text-decoration: none;
+  color: yellowgreen;
+  font-weight: bold;
 }
 
 input,
@@ -43,12 +50,12 @@ select {
 
 .head {
   align-self: center;
-  background-color: rgb(151, 101, 7);
+  background-color: rgb(2, 66, 50);
   color: aliceblue;
   margin: 3px;
   text-align: center;
   font-size: large;
-  padding: 1px;
+  padding: 10px;
   width: 50%;
   border-radius: 40px;
 }
@@ -104,6 +111,17 @@ label {
   font-weight: 1000;
   color: green;
 }
+#finalEstamp {
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#Registration {
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+}
 
 #Registation,
 #finalEstamp,
@@ -116,7 +134,9 @@ label {
     width: auto;
     padding: 0;
   }
-
+  .head {
+    width: auto;
+  }
   .table {
     width: auto;
   }
