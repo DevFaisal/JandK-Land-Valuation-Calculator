@@ -11,10 +11,16 @@ body {
 }
 
 .container {
+  width: auto;
   display: flex;
   flex-direction: column;
   background-color: rgb(58, 190, 190);
   padding: 10%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0%;
 }
 .valName {
   color: rgb(4, 170, 170);
@@ -46,6 +52,11 @@ select {
   font-size: large;
   border-radius: 50px;
   border: none;
+  font-weight: 500;
+}
+input:hover {
+  border: 3px solid rgb(255, 0, 55);
+  transition: border 0.3s ease-in-out;
 }
 
 .head {
@@ -70,6 +81,31 @@ label {
   align-self: center;
   text-align: end;
   font-weight: bold;
+}
+.all-tables {
+  display: flex;
+  flex-direction: column;
+  background: #eb3349; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f45c43,
+    #eb3349
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f45c43,
+    #eb3349
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  padding: 30px;
+  border-radius: 30px;
+  margin-top: 40px;
+}
+.result {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
 }
 
 #calBtn {
@@ -127,7 +163,8 @@ label {
 #finalEstamp,
 #TotatCostLand,
 #valuation,
-#consideration {
+#consideration,
+#govt-rate {
   font-weight: 700;
 }
 
@@ -139,18 +176,17 @@ label {
   .head {
     width: auto;
   }
-  .table {
-    width: auto;
-  }
 
   .table td,
   .table th,
   #Registration,
   #finalEstamp {
-    padding: 2px;
-    margin: 0px;
+    padding: 3px;
+    margin: 2px;
   }
-
+  .all-tables {
+    padding: 60px 15px;
+  }
   .container {
     align-content: center;
     width: auto;

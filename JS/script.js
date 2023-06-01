@@ -9,29 +9,64 @@ const typeOfDeed = document.getElementById("typeOfDeed");
 
 let result = 0;
 let eStamp = 0;
+let valuation = 0;
 
-calBtn.addEventListener("click", function () {
+calBtn.addEventListener("click", function (event) {
     const landValues = calculateLandValues();
     const deedPercentages = getDeedPercentages(typeOfDeed.value, gender.value);
-    const valuation = parseInt(document.getElementById("valuation-input").value);
+    valuation = parseInt(document.getElementById("valuation-input").value) || 0;
+
+    console.log(valuation);
 
     result = landValues.kanalValue + landValues.marlaValue + landValues.sirsaiValue + landValues.sQftValue;
-    let final = Math.floor(result);
+
+    let onlyLand = Math.floor(result);
+
+    let addVal = result + valuation;
+    let final = Math.floor(addVal);
+
 
     eStamp = (final * deedPercentages.percenOfEstamp) / 100;
 
     let totalEstampValue = roundToNearestTen(eStamp);
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
 
-    updateDOM(landValues, final, valuation, totalEstampValue, registationFee);
+    updateDOM(landValues, onlyLand, valuation, totalEstampValue, registationFee);
+
+
+    event.preventDefault();
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
 });
 
 //Function to calculate the land values
 function calculateLandValues() {
-    let kanalValue = perKanalRate.value * kanal.value;
-    let marlaValue = (perKanalRate.value / 20) * marla.value;
-    let sirsaiValue = (perKanalRate.value / 20 / 9) * sirsai.value;
-    let sQftValue = (perKanalRate.value / 20 / 9 / 30.25) * sQft.value;
+    let kanalValue = 0;
+    let marlaValue = 0;
+    let sirsaiValue = 0;
+    let sQftValue = 0;
+
+    const perKanalRateValue = parseFloat(perKanalRate.value);
+    const kanalValueInput = parseFloat(kanal.value);
+    const marlaValueInput = parseFloat(marla.value);
+    const sirsaiValueInput = parseFloat(sirsai.value);
+    const sQftValueInput = parseFloat(sQft.value);
+
+    if (!isNaN(perKanalRateValue) && !isNaN(kanalValueInput)) {
+        kanalValue = perKanalRateValue * kanalValueInput;
+    }
+    if (!isNaN(perKanalRateValue) && !isNaN(marlaValueInput)) {
+        marlaValue = (perKanalRateValue / 20) * marlaValueInput;
+    }
+    if (!isNaN(perKanalRateValue) && !isNaN(sirsaiValueInput)) {
+        sirsaiValue = (perKanalRateValue / 20 / 9) * sirsaiValueInput;
+    }
+    if (!isNaN(perKanalRateValue) && !isNaN(sQftValueInput)) {
+        sQftValue = (perKanalRateValue / 20 / 9 / 30.25) * sQftValueInput;
+    }
 
     return {
         kanalValue,
@@ -40,6 +75,7 @@ function calculateLandValues() {
         sQftValue
     };
 }
+
 
 //Function for Getting the Percentage
 function getDeedPercentages(typeOfDeed, gender) {
@@ -77,24 +113,29 @@ function getDeedPercentages(typeOfDeed, gender) {
 }
 
 //Function to update the DOM with calculated values
-function updateDOM(landValues, final, valuation, totalEstampValue, registationFee) {
+function updateDOM(landValues, onlyLand, valuation, totalEstampValue, registationFee) {
     document.getElementById("kanalOutput").innerText = kanal.value;
     document.getElementById("marlaOutput").innerText = marla.value;
     document.getElementById("sirsaiOutput").innerText = sirsai.value;
     document.getElementById("SqftOutput").innerText = sQft.value;
 
+    if (isNaN(valuation)) {
+        valuation = 0;
+    }
 
-    let totalCostOfLand = formatNumberWithCommas(final);
+    let totalCostOfLand = formatNumberWithCommas(onlyLand);
     let finalEstamp = formatNumberWithCommas(totalEstampValue);
     let totalResgitationFee = formatNumberWithCommas(roundToNearestTen(registationFee));
-    let totalAmountToBePaid = roundToNearestTen(registationFee + totalEstampValue + valuation);
+    let totalAmountToBePaid = roundToNearestTen(registationFee + totalEstampValue);
+    let govtRate = parseInt(perKanalRate.value);
 
     document.getElementById("TotatCostLand").innerText = totalCostOfLand;
     document.getElementById("valuation").innerText = formatNumberWithCommas(valuation);
     document.getElementById("finalEstamp").innerText = finalEstamp;
+    document.getElementById("govt-rate").innerText = formatNumberWithCommas(govtRate);
     document.getElementById("Registration").innerText = totalResgitationFee;
+    document.getElementById("consideration").innerText = formatNumberWithCommas(onlyLand + valuation);
     document.getElementById("totalAmountPaid").innerHTML = formatNumberWithCommas(totalAmountToBePaid);
-    document.getElementById("consideration").innerText = formatNumberWithCommas(final + valuation);
 }
 
 //Function to get the Ten if the number is near to Ten
@@ -113,3 +154,4 @@ function formatNumberWithCommas(number) {
         })
         .replace(/\.00$/, "");
 }
+

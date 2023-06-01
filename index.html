@@ -15,100 +15,153 @@
       <a href="https://www.linkedin.com/in/dev-faisal/">Faisal Farooq</a>
     </h4>
     <div class="container">
-      <label>Type of Deed</label>
+      <form action="#" class="form">
+        <label>Type of Deed</label>
 
-      <select id="typeOfDeed">
-        <option value="sale">Conveyance/Sale deed</option>
-        <option value="gift">Gift Deed</option>
-      </select>
+        <select id="typeOfDeed">
+          <option value="sale">Conveyance/Sale deed</option>
+          <option value="gift">Gift Deed</option>
+        </select>
 
-      <h3 class="head">Write Land Info</h3>
+        <h3 class="head">Write Land Info</h3>
 
-      <label>Rate Per Kanal</label>
-      <input
-        id="perKanalRate"
-        type="number"
-        placeholder="Govt Rate of Per Kanal"
-        min="0"
-      />
+        <label>Rate Per Kanal</label>
+        <input
+          id="perKanalRate"
+          type="number"
+          placeholder="Govt Rate of Per Kanal"
+          min="0"
+          max="10000000"
+          required
+          inputmode="numeric"
+          autofocus
+          autocomplete="off"
+        />
 
-      <label>if Valuation</label>
-      <input
-        id="valuation-input"
-        type="text"
-        placeholder="Valuation of Trees or Structure"
-        min="0"
-        value="0"
-      />
+        <label>if Valuation</label>
+        <input
+          id="valuation-input"
+          type="text"
+          placeholder="Valuation of Trees or Structure"
+          min="0"
+          max="10000000"
+          inputmode="numeric"
+          autocomplete="off"
+        />
 
-      <label>Kanal</label>
-      <input id="kanal" type="number" placeholder="Enter Kanal" min="0" />
+        <label>Kanal</label>
+        <input
+          id="kanal"
+          type="number"
+          placeholder="Enter Kanal"
+          min="0"
+          max="1000"
+          inputmode="numeric"
+          autocomplete="off"
+        />
 
-      <label>Marla</label>
-      <input id="marla" type="number" placeholder="Enter Marla" min="0" />
+        <label>Marla</label>
+        <input
+          id="marla"
+          type="number"
+          placeholder="Enter Marla"
+          min="0"
+          max="1000"
+          inputmode="numeric"
+          autocomplete="off"
+        />
 
-      <label>Sirsai</label>
-      <input id="sirsai" type="number" placeholder="Enter Sirsai" min="0" />
+        <label>Sirsai</label>
+        <input
+          id="sirsai"
+          type="number"
+          placeholder="Enter Sirsai"
+          min="0"
+          max="10000"
+          inputmode="numeric"
+          autocomplete="off"
+        />
 
-      <label>Square Feet</label>
-      <input id="sqft" type="number" placeholder="Enter Square Feet" min="0" />
+        <label>Square Feet</label>
+        <input
+          id="sqft"
+          type="number"
+          placeholder="Enter Square Feet"
+          min="0"
+          max="10000"
+          inputmode="numeric"
+          autocomplete="off"
+        />
 
-      <label for>Choose Gender</label>
-      <select id="gender">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Both">Both</option>
-      </select>
+        <label for>Choose Gender</label>
+        <select id="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Both">Both</option>
+        </select>
 
-      <button id="calBtn">Calculate</button>
+        <button type="submit" id="calBtn">Calculate</button>
+      </form>
+      <div class="all-tables">
+        <h2 class="result">Result</h2>
+        <table class="table" id="table">
+          <tr>
+            <th colspan="4">Govt Rate Per Kanal</th>
+          </tr>
+          <tr>
+            <td colspan="4" id="govt-rate">0</td>
+          </tr>
+          <tr>
+            <th>Kanal</th>
+            <th>Marlas</th>
+            <th>Sirsai</th>
+            <th>Sq.ft</th>
+          </tr>
+          <tr>
+            <td id="kanalOutput">0</td>
+            <td id="marlaOutput">0</td>
+            <td id="sirsaiOutput">0</td>
+            <td id="SqftOutput">0</td>
+          </tr>
+        </table>
 
-      <table class="table">
-        <tr>
-          <th>Kanal</th>
-          <th>Marlas</th>
-          <th>Sirsai</th>
-          <th>Square Feet</th>
-        </tr>
-        <tr>
-          <td id="kanalOutput">0</td>
-          <td id="marlaOutput">0</td>
-          <td id="sirsaiOutput">0</td>
-          <td id="SqftOutput">0</td>
-        </tr>
-      </table>
+        <table class="table">
+          <tr>
+            <th>Total Cost of Land</th>
+            <th>Valuation</th>
+          </tr>
+          <tr>
+            <td id="TotatCostLand">0</td>
+            <td id="valuation">0</td>
+          </tr>
+          <tr>
+            <th colspan="3">Consideration</th>
+          </tr>
+          <tr>
+            <td colspan="3" id="consideration">0</td>
+          </tr>
+        </table>
 
-      <table class="table">
-        <tr>
-          <th>Total Cost of Land</th>
-          <th>Valuation</th>
-          <th>Consideration</th>
-        </tr>
-        <tr>
-          <td id="TotatCostLand">0</td>
-          <td id="valuation">0</td>
-          <td id="consideration">0</td>
-        </tr>
-      </table>
+        <table class="table">
+          <tr>
+            <th>eStamp</th>
+            <th>Registration Fees</th>
+          </tr>
 
-      <table class="table">
-        <tr>
-          <th>eStamp</th>
-          <th>Registration Fees</th>
-        </tr>
+          <tr>
+            <td id="finalEstamp">0</td>
+            <td id="Registration">0</td>
+          </tr>
 
-        <tr>
-          <td id="finalEstamp">0</td>
-          <td id="Registration">0</td>
-        </tr>
+          <tr>
+            <th colspan="3">Total Amount</th>
+          </tr>
 
-        <tr>
-          <th colspan="3">Total Amount</th>
-        </tr>
-
-        <tr>
-          <td colspan="3" id="totalAmountPaid">0</td>
-        </tr>
-      </table>
+          <tr>
+            <td colspan="3" id="totalAmountPaid">0</td>
+          </tr>
+        </table>
+      </div>
     </div>
     <script src="/JS/script.js"></script>
   </body>
