@@ -10,39 +10,52 @@ body {
   padding: 0;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
 .container {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: rgb(58, 190, 190);
+  background-color: rgb(125, 173, 89);
   padding: 10%;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   padding: 0%;
-}
-.valName {
-  color: rgb(4, 170, 170);
 }
 
 .top-head {
   display: flex;
   justify-content: center;
   text-align: center;
-  font-size: 30px;
-  margin-top: 10px;
+  font-size: 20px;
+  margin-top: 0px;
+  font-weight: 600;
+}
+
+.top-head-jk {
+  color: rgb(76, 141, 26);
+  margin-top: 5px;
 }
 
 .devinfo {
+  font-size: 12px;
   text-align: center;
   font-weight: 500;
+  color: rgb(182, 182, 178);
 }
 
 .devinfo a {
   text-decoration: none;
-  color: yellowgreen;
-  font-weight: bold;
+  color: rgb(50, 169, 205);
+  font-weight: 600;
 }
 
 input,
@@ -54,21 +67,21 @@ select {
   border: none;
   font-weight: 500;
 }
+
 input:hover {
-  border: 3px solid rgb(255, 0, 55);
+  border: 3px solid #d1890b;
   transition: border 0.3s ease-in-out;
 }
 
 .head {
   align-self: center;
-  background-color: rgb(2, 66, 50);
+  background-color: rgb(26, 40, 49);
   color: aliceblue;
   margin: 3px;
   text-align: center;
-  font-size: large;
-  padding: 10px;
-  width: 50%;
-  border-radius: 40px;
+  font-weight: 400;
+  padding: 5px 50px;
+  border-radius: 10px;
 }
 
 label {
@@ -76,31 +89,62 @@ label {
   font-weight: bold;
 }
 
+#required {
+  color: red;
+  margin-left: 5px;
+}
+
 .result {
   font-size: 25px;
   align-self: center;
   text-align: end;
   font-weight: bold;
+  margin-top: -25px;
 }
-.all-tables {
-  display: flex;
-  flex-direction: column;
-  background: #eb3349; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f45c43,
-    #eb3349
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f45c43,
-    #eb3349
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+.all-tables {
+  display: none;
+  flex-direction: column;
+  width: 70%;
+  background: linear-gradient(69.9deg,
+      rgb(76, 79, 106) 3.2%,
+      rgb(118, 124, 163) 97.6%);
   padding: 30px;
   border-radius: 30px;
-  margin-top: 40px;
+  position: absolute;
+  /* Changed to 'fixed' instead of 'absolute' for better positioning */
+  top: 50%;
+  /* Adjusted from 80% to center vertically */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  margin-top: 10%;
 }
+
+#reset {
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+  border-radius: 50px;
+}
+
+#backgroundOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
 .result {
   text-align: center;
   font-size: 30px;
@@ -117,19 +161,20 @@ label {
   background-color: rgb(26, 40, 49);
   color: white;
   border: none;
+  margin: 10px 0px 40px 0px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #calBtn:hover {
-  background-color: deepskyblue;
+  background-color: rgb(4, 107, 47);
 }
 
 .table {
   width: auto;
   margin-top: 20px;
   text-align: center;
-  background-color: antiquewhite;
+  background-color: rgb(215, 219, 217);
   border: 1px solid black;
   padding: 10px;
   border-radius: 30px;
@@ -147,6 +192,7 @@ label {
   font-weight: 1000;
   color: green;
 }
+
 #finalEstamp {
   color: blue;
   font-weight: bold;
@@ -173,6 +219,7 @@ label {
     width: auto;
     padding: 0;
   }
+
   .head {
     width: auto;
   }
@@ -181,12 +228,21 @@ label {
   .table th,
   #Registration,
   #finalEstamp {
-    padding: 3px;
+    padding: 2px;
     margin: 2px;
   }
+
   .all-tables {
-    padding: 60px 15px;
+    padding: 20px 15px;
+    position: fixed;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
+
+  #backgroundOverlay {
+    backdrop-filter: blur(10px);
+  }
+
   .container {
     align-content: center;
     width: auto;

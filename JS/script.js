@@ -1,49 +1,69 @@
-const perKanalRate = document.getElementById("perKanalRate");
-const calBtn = document.getElementById("calBtn");
-const kanal = document.getElementById("kanal");
-const marla = document.getElementById("marla");
-const sirsai = document.getElementById("sirsai");
-const sQft = document.getElementById("sqft");
-const gender = document.getElementById("gender");
-const typeOfDeed = document.getElementById("typeOfDeed");
+document.addEventListener("DOMContentLoaded", () => {
+  const perKanalRate = document.getElementById("perKanalRate");
+  const calBtn = document.getElementById("calBtn");
+  const kanal = document.getElementById("kanal");
+  const marla = document.getElementById("marla");
+  const sirsai = document.getElementById("sirsai");
+  const sQft = document.getElementById("sqft");
+  const gender = document.getElementById("gender");
+  const typeOfDeed = document.getElementById("typeOfDeed");
 
-let result = 0;
-let eStamp = 0;
-let valuation = 0;
+  let result = 0;
+  let eStamp = 0;
+  let valuation = 0;
 
-calBtn.addEventListener("click", function (event) {
+  calBtn.addEventListener("click", function (event) {
     const landValues = calculateLandValues();
     const deedPercentages = getDeedPercentages(typeOfDeed.value, gender.value);
     valuation = parseInt(document.getElementById("valuation-input").value) || 0;
 
-    console.log(valuation);
-
-    result = landValues.kanalValue + landValues.marlaValue + landValues.sirsaiValue + landValues.sQftValue;
+    result =
+      landValues.kanalValue +
+      landValues.marlaValue +
+      landValues.sirsaiValue +
+      landValues.sQftValue;
 
     let onlyLand = Math.floor(result);
 
     let addVal = result + valuation;
     let final = Math.floor(addVal);
 
-
     eStamp = (final * deedPercentages.percenOfEstamp) / 100;
 
     let totalEstampValue = roundToNearestTen(eStamp);
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
 
-    updateDOM(landValues, onlyLand, valuation, totalEstampValue, registationFee);
-
+    updateDOM(
+      landValues,
+      onlyLand,
+      valuation,
+      totalEstampValue,
+      registationFee
+    );
 
     event.preventDefault();
 
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
-});
+    let landValCheck = parseInt(perKanalRate.value) || 0;
 
-//Function to calculate the land values
-function calculateLandValues() {
+    if (landValCheck > 0) {
+      popupContainer.style.display = "flex";
+      backgroundOverlay.style.display = "block";
+      setTimeout(() => {
+        popupContainer.style.setProperty("opacity", "1");
+        popupContainer.style.setProperty("visibility", "visible");
+        backgroundOverlay.style.setProperty("opacity", "1");
+        backgroundOverlay.style.setProperty("visibility", "visible");
+      }, 300);
+    } else {
+      perKanalRate.focus();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  });
+  //Function to calculate the land values
+  function calculateLandValues() {
     let kanalValue = 0;
     let marlaValue = 0;
     let sirsaiValue = 0;
@@ -56,102 +76,146 @@ function calculateLandValues() {
     const sQftValueInput = parseFloat(sQft.value);
 
     if (!isNaN(perKanalRateValue) && !isNaN(kanalValueInput)) {
-        kanalValue = perKanalRateValue * kanalValueInput;
+      kanalValue = perKanalRateValue * kanalValueInput;
     }
     if (!isNaN(perKanalRateValue) && !isNaN(marlaValueInput)) {
-        marlaValue = (perKanalRateValue / 20) * marlaValueInput;
+      marlaValue = (perKanalRateValue / 20) * marlaValueInput;
     }
     if (!isNaN(perKanalRateValue) && !isNaN(sirsaiValueInput)) {
-        sirsaiValue = (perKanalRateValue / 20 / 9) * sirsaiValueInput;
+      sirsaiValue = (perKanalRateValue / 20 / 9) * sirsaiValueInput;
     }
     if (!isNaN(perKanalRateValue) && !isNaN(sQftValueInput)) {
-        sQftValue = (perKanalRateValue / 20 / 9 / 30.25) * sQftValueInput;
+      sQftValue = (perKanalRateValue / 20 / 9 / 30.25) * sQftValueInput;
     }
 
     return {
-        kanalValue,
-        marlaValue,
-        sirsaiValue,
-        sQftValue
+      kanalValue,
+      marlaValue,
+      sirsaiValue,
+      sQftValue,
     };
-}
+  }
 
-
-//Function for Getting the Percentage
-function getDeedPercentages(typeOfDeed, gender) {
+  //Function for Getting the Percentage
+  function getDeedPercentages(typeOfDeed, gender) {
     let percenOfEstamp = 0.0;
     let percenOfReg = 0.0;
 
     if (typeOfDeed === "sale") {
-        if (gender === "Male") {
-            percenOfEstamp = 7;
-            percenOfReg = 1.2;
-        } else if (gender === "Female") {
-            percenOfEstamp = 3;
-            percenOfReg = 1.2;
-        } else if (gender === "Both") {
-            percenOfEstamp = 5;
-            percenOfReg = 1.2;
-        }
+      if (gender === "Male") {
+        percenOfEstamp = 7;
+        percenOfReg = 1.2;
+      } else if (gender === "Female") {
+        percenOfEstamp = 3;
+        percenOfReg = 1.2;
+      } else if (gender === "Both") {
+        percenOfEstamp = 5;
+        percenOfReg = 1.2;
+      }
     } else if (typeOfDeed === "gift") {
-        if (gender === "Male") {
-            percenOfEstamp = 7;
-            percenOfReg = 0.5;
-        } else if (gender === "Female") {
-            percenOfEstamp = 3;
-            percenOfReg = 0.5;
-        } else if (gender === "Both") {
-            percenOfEstamp = 5;
-            percenOfReg = 0.5;
-        }
+      if (gender === "Male") {
+        percenOfEstamp = 7;
+        percenOfReg = 0.5;
+      } else if (gender === "Female") {
+        percenOfEstamp = 3;
+        percenOfReg = 0.5;
+      } else if (gender === "Both") {
+        percenOfEstamp = 5;
+        percenOfReg = 0.5;
+      }
     }
 
     return {
-        percenOfEstamp,
-        percenOfReg
+      percenOfEstamp,
+      percenOfReg,
     };
-}
+  }
 
-//Function to update the DOM with calculated values
-function updateDOM(landValues, onlyLand, valuation, totalEstampValue, registationFee) {
-    document.getElementById("kanalOutput").innerText = kanal.value;
-    document.getElementById("marlaOutput").innerText = marla.value;
-    document.getElementById("sirsaiOutput").innerText = sirsai.value;
-    document.getElementById("SqftOutput").innerText = sQft.value;
+  //Function to update the DOM with calculated values
+  function updateDOM(
+    landValues,
+    onlyLand,
+    valuation,
+    totalEstampValue,
+    registationFee
+  ) {
+    document.getElementById("kanalOutput").innerText = kanal.value || 0;
+    document.getElementById("marlaOutput").innerText = marla.value || 0;
+    document.getElementById("sirsaiOutput").innerText = sirsai.value || 0;
+    document.getElementById("SqftOutput").innerText = sQft.value || 0;
 
     if (isNaN(valuation)) {
-        valuation = 0;
+      valuation = 0;
     }
 
     let totalCostOfLand = formatNumberWithCommas(onlyLand);
     let finalEstamp = formatNumberWithCommas(totalEstampValue);
-    let totalResgitationFee = formatNumberWithCommas(roundToNearestTen(registationFee));
-    let totalAmountToBePaid = roundToNearestTen(registationFee + totalEstampValue);
-    let govtRate = parseInt(perKanalRate.value);
+    let totalResgitationFee = formatNumberWithCommas(
+      roundToNearestTen(registationFee)
+    );
+    let totalAmountToBePaid = roundToNearestTen(
+      registationFee + totalEstampValue
+    );
+    let govtRate = parseInt(perKanalRate.value) || 0;
 
     document.getElementById("TotatCostLand").innerText = totalCostOfLand;
-    document.getElementById("valuation").innerText = formatNumberWithCommas(valuation);
+    document.getElementById("valuation").innerText =
+      formatNumberWithCommas(valuation);
     document.getElementById("finalEstamp").innerText = finalEstamp;
-    document.getElementById("govt-rate").innerText = formatNumberWithCommas(govtRate);
+    document.getElementById("govt-rate").innerText =
+      formatNumberWithCommas(govtRate);
     document.getElementById("Registration").innerText = totalResgitationFee;
-    document.getElementById("consideration").innerText = formatNumberWithCommas(onlyLand + valuation);
-    document.getElementById("totalAmountPaid").innerHTML = formatNumberWithCommas(totalAmountToBePaid);
-}
+    document.getElementById("consideration").innerText = formatNumberWithCommas(
+      onlyLand + valuation
+    );
+    document.getElementById("totalAmountPaid").innerHTML =
+      formatNumberWithCommas(totalAmountToBePaid);
+  }
 
-//Function to get the Ten if the number is near to Ten
-function roundToNearestTen(number) {
+  //Function to get the Ten if the number is near to Ten
+  function roundToNearestTen(number) {
     return Math.ceil(number / 10) * 10;
-}
+  }
 
-//Function for comma in Indian Currency
-function formatNumberWithCommas(number) {
+  //Function for comma in Indian Currency
+  function formatNumberWithCommas(number) {
     return number
-        .toLocaleString("en-IN", {
-            style: "currency",
-            currency: "INR",
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 2,
-        })
-        .replace(/\.00$/, "");
-}
+      .toLocaleString("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      })
+      .replace(/\.00$/, "");
+  }
 
+  const popupContainer = document.querySelector("#all-tables");
+  const backgroundOverlay = document.querySelector("#backgroundOverlay");
+  const resetBtn = document.querySelector("#reset");
+
+  // calBtn.addEventListener('click', () => {
+  // let landValCheck = parseInt(perKanalRate.value) || 0;
+
+  // if (landValCheck > 0) {
+  //     popupContainer.style.display = 'flex';
+  //     backgroundOverlay.style.display = 'block';
+  //     setTimeout(() => {
+  //         popupContainer.style.setProperty('opacity', '1');
+  //         popupContainer.style.setProperty('visibility', 'visible');
+  //         backgroundOverlay.style.setProperty('opacity', '1');
+  //         backgroundOverlay.style.setProperty('visibility', 'visible');
+  //     }, 100);
+  // }
+  //     else {
+  //         perKanalRate.focus();
+  //     }
+
+  // });
+
+  resetBtn.addEventListener("click", () => {
+    popupContainer.style.opacity = "0";
+    popupContainer.style.visibility = "hidden";
+    backgroundOverlay.style.opacity = "0";
+    backgroundOverlay.style.visibility = "hidden";
+  });
+});

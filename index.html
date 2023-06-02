@@ -4,16 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/Icon/lc.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="shortcut icon" href="Icon/ic.png" type="image/x-icon" />
+    <link rel="stylesheet" href="CSS/style.css" />
     <title>Valuation Calculator</title>
   </head>
   <body>
-    <h2 class="top-head">Valuation Calculator</h2>
-    <h4 class="devinfo">
-      Developed by :
-      <a href="https://www.linkedin.com/in/dev-faisal/">Faisal Farooq</a>
-    </h4>
+    <header>
+      <h2 class="top-head-jk">Jammu & Kashmir Land</h2>
+      <h2 class="top-head">Valuation Calculator</h2>
+      <h4 class="devinfo">
+        Developed by :
+        <a href="https://www.linkedin.com/in/dev-faisal/">Faisal Farooq</a>
+      </h4>
+    </header>
     <div class="container">
       <form action="#" class="form">
         <label>Type of Deed</label>
@@ -25,72 +28,82 @@
 
         <h3 class="head">Write Land Info</h3>
 
-        <label>Rate Per Kanal</label>
+        <label>Rate Per Kanal <span id="required">*</span></label>
         <input
           id="perKanalRate"
-          type="number"
+          type="text"
           placeholder="Govt Rate of Per Kanal"
           min="0"
-          max="10000000"
+          ;
           required
           inputmode="numeric"
           autofocus
           autocomplete="off"
+          minlength="0"
+          maxlength="7"
+          ;
         />
 
-        <label>if Valuation</label>
+        <label>If Valuation</label>
         <input
           id="valuation-input"
           type="text"
           placeholder="Valuation of Trees or Structure"
-          min="0"
-          max="10000000"
+          minlength="0"
+          ;
           inputmode="numeric"
           autocomplete="off"
+          maxlength="7"
+          ;
         />
 
         <label>Kanal</label>
         <input
           id="kanal"
-          type="number"
+          type="text"
           placeholder="Enter Kanal"
-          min="0"
-          max="1000"
+          minlength="0"
+          ;
           inputmode="numeric"
           autocomplete="off"
+          maxlength="2"
+          ;
         />
 
         <label>Marla</label>
         <input
           id="marla"
-          type="number"
+          type="text"
           placeholder="Enter Marla"
-          min="0"
-          max="1000"
           inputmode="numeric"
+          minlength="0"
+          ;
           autocomplete="off"
+          maxlength="3"
         />
 
         <label>Sirsai</label>
         <input
           id="sirsai"
-          type="number"
+          type="text"
           placeholder="Enter Sirsai"
-          min="0"
-          max="10000"
+          minlength="0"
+          ;
           inputmode="numeric"
           autocomplete="off"
+          maxlength="4"
         />
 
         <label>Square Feet</label>
         <input
           id="sqft"
-          type="number"
+          type="text"
           placeholder="Enter Square Feet"
-          min="0"
-          max="10000"
+          minlength="0"
+          ;
           inputmode="numeric"
           autocomplete="off"
+          maxlength="4"
         />
 
         <label for>Choose Gender</label>
@@ -102,7 +115,9 @@
 
         <button type="submit" id="calBtn">Calculate</button>
       </form>
-      <div class="all-tables">
+
+      <div class="all-tables" id="all-tables">
+        <button type="reset" id="reset">&#10006;</button>
         <h2 class="result">Result</h2>
         <table class="table" id="table">
           <tr>
@@ -163,6 +178,7 @@
         </table>
       </div>
     </div>
-    <script src="/JS/script.js"></script>
+    <div id="backgroundOverlay"></div>
+    <script src="JS/script.js"></script>
   </body>
 </html>
