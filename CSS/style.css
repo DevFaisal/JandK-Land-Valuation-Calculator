@@ -8,6 +8,7 @@
 
 body {
   padding: 0;
+  height: 100vh;
 }
 
 header {
@@ -21,7 +22,7 @@ header {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: rgb(125, 173, 89);
+  background-color: #125f6a;
   padding: 10%;
 }
 
@@ -30,7 +31,24 @@ header {
   flex-direction: column;
   padding: 0%;
 }
+#shareBtn {
+  padding: 6px 10px;
+  margin-top: 15px;
+  background-color: rgb(215, 219, 217);
+  color: black;
+  width: 100px;
+  font-weight: 700;
+  align-self: center;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
+#shareBtn:hover {
+  background-color: rgb(68, 163, 218);
+  transition: background-color 0.3s ease;
+}
 .top-head {
   display: flex;
   justify-content: center;
@@ -41,7 +59,7 @@ header {
 }
 
 .top-head-jk {
-  color: rgb(76, 141, 26);
+  color: #125f6a;
   margin-top: 5px;
 }
 
@@ -86,7 +104,8 @@ input:hover {
 
 label {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #ffff;
 }
 
 #required {
@@ -106,9 +125,18 @@ label {
   display: none;
   flex-direction: column;
   width: 70%;
-  background: linear-gradient(69.9deg,
-      rgb(76, 79, 106) 3.2%,
-      rgb(118, 124, 163) 97.6%);
+  background: #2c3e50; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4ca1af,
+    #2c3e50
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4ca1af,
+    #2c3e50
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   padding: 30px;
   border-radius: 30px;
   position: absolute;
@@ -158,16 +186,17 @@ label {
   padding: 10px;
   font-size: 20px;
   border-radius: 40px;
-  background-color: rgb(26, 40, 49);
-  color: white;
+  background-color: #f9f9f4;
+  color: black;
   border: none;
+  font-weight: 600;
   margin: 10px 0px 40px 0px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #calBtn:hover {
-  background-color: rgb(4, 107, 47);
+  background-color: #1dc7c4;
 }
 
 .table {
@@ -190,17 +219,17 @@ label {
 #totalAmountPaid {
   font-size: larger;
   font-weight: 1000;
-  color: green;
+  color: #0b871d;
 }
 
 #finalEstamp {
-  color: blue;
+  color: #18566e;
   font-weight: bold;
   font-size: 18px;
 }
 
 #Registration {
-  color: blue;
+  color: #18566e;
   font-weight: bold;
   font-size: 18px;
 }
@@ -235,7 +264,7 @@ label {
   .all-tables {
     padding: 20px 15px;
     position: fixed;
-    margin-top: 5%;
+    margin-top: 0%;
     margin-bottom: 5%;
   }
 

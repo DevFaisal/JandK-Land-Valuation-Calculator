@@ -193,25 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const backgroundOverlay = document.querySelector("#backgroundOverlay");
   const resetBtn = document.querySelector("#reset");
 
-  // calBtn.addEventListener('click', () => {
-  // let landValCheck = parseInt(perKanalRate.value) || 0;
-
-  // if (landValCheck > 0) {
-  //     popupContainer.style.display = 'flex';
-  //     backgroundOverlay.style.display = 'block';
-  //     setTimeout(() => {
-  //         popupContainer.style.setProperty('opacity', '1');
-  //         popupContainer.style.setProperty('visibility', 'visible');
-  //         backgroundOverlay.style.setProperty('opacity', '1');
-  //         backgroundOverlay.style.setProperty('visibility', 'visible');
-  //     }, 100);
-  // }
-  //     else {
-  //         perKanalRate.focus();
-  //     }
-
-  // });
-
   resetBtn.addEventListener("click", () => {
     popupContainer.style.opacity = "0";
     popupContainer.style.visibility = "hidden";
@@ -219,3 +200,65 @@ document.addEventListener("DOMContentLoaded", () => {
     backgroundOverlay.style.visibility = "hidden";
   });
 });
+
+
+//Testing new Things here
+
+const shareBtn = document.getElementById("shareBtn");
+shareBtn.addEventListener("click", shareTableInfo);
+
+
+function shareTableInfo() {
+  const tableInfo = getTableInfo(); // Get the information from the tables
+
+  if (navigator.share) { // Check if the Web Share API is supported
+    navigator.share({
+      title: "Table Information",
+      text: tableInfo,
+    })
+      .then(() => console.log("Table shared successfully."))
+      .catch((error) => console.error("Error sharing table:", error));
+  } else {
+    alert("Table sharing is not supported on this device.");
+  }
+}
+
+function getTableInfo() {
+  // Get the necessary values from the DOM
+  const kanalValue = document.getElementById("kanalOutput").innerText;
+  const marlaValue = document.getElementById("marlaOutput").innerText;
+  const sirsaiValue = document.getElementById("sirsaiOutput").innerText;
+  const sqftValue = document.getElementById("SqftOutput").innerText;
+  const totalCostOfLand = document.getElementById("TotatCostLand").innerText;
+  const valuation = document.getElementById("valuation").innerText;
+  const finalEstamp = document.getElementById("finalEstamp").innerText;
+  const govtRate = document.getElementById("govt-rate").innerText;
+  const registration = document.getElementById("Registration").innerText;
+  const consideration = document.getElementById("consideration").innerText;
+  const totalAmountPaid = document.getElementById("totalAmountPaid").innerText;
+
+  // Construct the table information string
+  const tableInfo = ` 
+  *FINAL VALUATION SUMMARY*
+  --------------------------------
+  *Land Information*
+    Kanal: ${kanalValue}
+    Marla: ${marlaValue}
+    Sirsai: ${sirsaiValue}
+    Sqft: ${sqftValue}
+  --------------------------------
+  *Rates*  
+    Govt Rate Per Kanal: ${govtRate}
+    Total Cost of Land: ${totalCostOfLand}
+    Valuation: ${valuation}
+    Total Consideration: ${consideration}
+  -------------------------------
+  *Fees Calculation*  
+    eStamp: ${finalEstamp}
+    Registration Fee: ${registration}
+  --------------------------------
+    *Total Amount Paid: ${totalAmountPaid}*
+  `;
+
+  return tableInfo;
+}
