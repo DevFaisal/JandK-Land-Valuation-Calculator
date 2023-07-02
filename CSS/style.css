@@ -22,7 +22,7 @@ header {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: #01a368;
+  background-color: #cf9f02;
   padding: 10%;
 }
 
@@ -59,7 +59,7 @@ header {
 }
 
 .top-head-jk {
-  color: #125f6a;
+  color: #c99c0a;
   margin-top: 5px;
 }
 
