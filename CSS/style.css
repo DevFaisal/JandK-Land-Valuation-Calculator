@@ -22,7 +22,7 @@ header {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: #cf9f02;
+  background-color: #568203;
   padding: 10%;
 }
 
@@ -59,7 +59,7 @@ header {
 }
 
 .top-head-jk {
-  color: #c99c0a;
+  color: #006400;
   margin-top: 5px;
 }
 
@@ -125,17 +125,8 @@ label {
   display: none;
   flex-direction: column;
   width: 70%;
-  background: #2c3e50; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #4ca1af,
-    #2c3e50
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #4ca1af,
-    #2c3e50
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #f4d03f;
+  background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
 
   padding: 30px;
   border-radius: 30px;
