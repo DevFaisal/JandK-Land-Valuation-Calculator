@@ -33,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalEstampValue = roundToNearestTen(eStamp);
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
 
+    if (getDeedPercentages(typeOfDeed.value == 'gift') && registationFee >= 10000) {
+      registationFee = 10000;
+    }
+
     updateDOM(
       landValues,
       onlyLand,
@@ -203,7 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //Testing new Things here
-
 const shareBtn = document.getElementById("shareBtn");
 shareBtn.addEventListener("click", shareTableInfo);
 
