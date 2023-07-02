@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalEstampValue = roundToNearestTen(eStamp);
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
 
-    if (getDeedPercentages(typeOfDeed.value == 'gift') && registationFee >= 10000) {
+
+    if (typeOfDeed.value === "gift" && registationFee >= 10000) {
       registationFee = 10000;
     }
 
