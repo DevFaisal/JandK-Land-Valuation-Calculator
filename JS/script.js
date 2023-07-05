@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const calBtn = document.getElementById("calBtn");
   const kanal = document.getElementById("kanal");
   const marla = document.getElementById("marla");
+  const typeOfDeed = document.getElementById("typeOfDeed");
   const sirsai = document.getElementById("sirsai");
   const sQft = document.getElementById("sqft");
   const gender = document.getElementById("gender");
-  const typeOfDeed = document.getElementById("typeOfDeed");
 
   let result = 0;
   let eStamp = 0;
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       onlyLand,
       valuation,
       totalEstampValue,
-      registationFee
+      registationFee,
     );
 
     event.preventDefault();
@@ -142,12 +142,14 @@ document.addEventListener("DOMContentLoaded", () => {
     onlyLand,
     valuation,
     totalEstampValue,
-    registationFee
+    registationFee,
   ) {
     document.getElementById("kanalOutput").innerText = kanal.value || 0;
     document.getElementById("marlaOutput").innerText = marla.value || 0;
     document.getElementById("sirsaiOutput").innerText = sirsai.value || 0;
     document.getElementById("SqftOutput").innerText = sQft.value || 0;
+    const sC = document.getElementById("ServiceCharges");
+    let serviceCharge = parseFloat(sC.value) || 0;
 
     if (isNaN(valuation)) {
       valuation = 0;
@@ -158,8 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalResgitationFee = formatNumberWithCommas(
       roundToNearestTen(registationFee)
     );
+
     let totalAmountToBePaid = roundToNearestTen(
-      registationFee + totalEstampValue
+      registationFee + totalEstampValue + serviceCharge
     );
     let govtRate = parseInt(perKanalRate.value) || 0;
 
@@ -173,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("consideration").innerText = formatNumberWithCommas(
       onlyLand + valuation
     );
+    document.getElementById("Charge").innerText = formatNumberWithCommas(serviceCharge);
     document.getElementById("totalAmountPaid").innerHTML =
       formatNumberWithCommas(totalAmountToBePaid);
   }
@@ -239,6 +243,7 @@ function getTableInfo() {
   const govtRate = document.getElementById("govt-rate").innerText;
   const registration = document.getElementById("Registration").innerText;
   const consideration = document.getElementById("consideration").innerText;
+  const serviceCharge = document.getElementById("Charge").innerText;
   const totalAmountPaid = document.getElementById("totalAmountPaid").innerText;
 
   // Construct the table information string
@@ -260,6 +265,7 @@ function getTableInfo() {
   *Fees Calculation*  
     eStamp: ${finalEstamp}
     Registration Fee: ${registration}
+    Service Charge : ${serviceCharge}
   --------------------------------
     *Total Amount Paid: ${totalAmountPaid}*
   `;

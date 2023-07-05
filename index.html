@@ -119,6 +119,17 @@
           autocomplete="off"
           maxlength="4"
         />
+        <label>Service Charges</label>
+        <input
+          id="ServiceCharges"
+          type="text"
+          placeholder="Enter Service Charges"
+          minlength="0"
+          ;
+          inputmode="numeric"
+          autocomplete="off"
+          maxlength="6"
+        />
 
         <label for>Choose Gender</label>
         <select id="gender">
@@ -177,10 +188,15 @@
             <th>eStamp</th>
             <th>Registration Fees</th>
           </tr>
-
           <tr>
             <td id="finalEstamp">0</td>
             <td id="Registration">0</td>
+          </tr>
+          <tr>
+            <th colspan="3">Service Charges</th>
+          </tr>
+          <tr>
+            <td colspan="3" id="Charge">0</td>
           </tr>
 
           <tr>
