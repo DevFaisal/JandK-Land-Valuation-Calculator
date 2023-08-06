@@ -22,7 +22,7 @@ header {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: #568203;
+  background-color: #45b9fc;
   padding: 10%;
 }
 
@@ -212,7 +212,22 @@ label {
   font-weight: 1000;
   color: #0b871d;
 }
-
+#navigation {
+  align-self: center;
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: 500;
+  border-radius: 10px;
+}
+#navigation p {
+  align-items: center;
+  padding: 15px;
+  margin: 0px 10px 0px 10px;
+}
+#navigation p a {
+  text-decoration: none;
+}
 #finalEstamp {
   color: #18566e;
   font-weight: bold;
