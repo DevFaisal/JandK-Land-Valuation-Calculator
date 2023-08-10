@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let valuation = 0;
 
   calBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
     const landValues = calculateLandValues();
     const deedPercentages = getDeedPercentages(typeOfDeed.value, gender.value);
     valuation = parseInt(document.getElementById("valuation-input").value) || 0;
@@ -46,11 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
       registationFee,
     );
 
-    event.preventDefault();
+
 
     let landValCheck = parseInt(perKanalRate.value) || 0;
 
-    if (landValCheck > 0) {
+    if (landValCheck > 0 && typeOfDeed.value != "rent") {
       popupContainer.style.display = "flex";
       backgroundOverlay.style.display = "block";
       setTimeout(() => {

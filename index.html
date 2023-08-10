@@ -10,8 +10,7 @@
     <!-- Google tag (gtag.js) -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-J5NM36N2FS"
-    ></script>
+      src="https://www.googletagmanager.com/gtag/js?id=G-J5NM36N2FS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -43,87 +42,114 @@
         <select id="typeOfDeed">
           <option value="sale">Conveyance/Sale deed</option>
           <option value="gift">Gift Deed</option>
+          <option value="rent">Rent/Lease</option>
         </select>
 
         <h3 class="head">Write Land Info</h3>
 
-        <label>Rate Per Kanal <span id="required">*</span></label>
-        <input
-          id="perKanalRate"
-          type="text"
-          placeholder="Govt Rate of Per Kanal"
-          min="0"
-          ;
-          required
-          inputmode="decimal"
-          autofocus
-          autocomplete="off"
-          minlength="0"
-          maxlength="7"
-          ;
-        />
+        <div class="rent">
+          <label>Lease Period in Years <span id="required">*</span></label>
+          <input
+            id="LeaseinYears"
+            type="text"
+            placeholder="Years"
+            min="0"
+            ;
+            required
+            inputmode="decimal"
+            autofocus
+            autocomplete="off"
+            minlength="0"
+            maxlength="3"
+            ; />
+          <label>Annual rent <span id="required">*</span></label>
+          <input
+            id="annualRent"
+            type="text"
+            placeholder="Rent Amount"
+            min="0"
+            ;
+            required
+            inputmode="decimal"
+            autofocus
+            autocomplete="off"
+            minlength="0"
+            maxlength="8"
+            ; />
+        </div>
+        <div class="other-rent">
+          <label>Rate Per Kanal <span id="required">*</span></label>
+          <input
+            id="perKanalRate"
+            type="text"
+            placeholder="Govt Rate of Per Kanal"
+            min="0"
+            ;
+            required
+            inputmode="decimal"
+            autofocus
+            autocomplete="off"
+            minlength="0"
+            maxlength="7"
+            ; />
 
-        <label>If Valuation</label>
-        <input
-          id="valuation-input"
-          type="text"
-          placeholder="Valuation of Trees or Structure"
-          minlength="0"
-          ;
-          inputmode="decimal"
-          autocomplete="off"
-          maxlength="7"
-          ;
-        />
+          <label>If Valuation</label>
+          <input
+            id="valuation-input"
+            type="text"
+            placeholder="Valuation of Trees or Structure"
+            minlength="0"
+            ;
+            inputmode="decimal"
+            autocomplete="off"
+            maxlength="7"
+            ; />
 
-        <label>Kanal</label>
-        <input
-          id="kanal"
-          type="text"
-          placeholder="Enter Kanal"
-          minlength="0"
-          ;
-          inputmode="decimal"
-          autocomplete="off"
-          maxlength="2"
-          ;
-        />
+          <label>Kanal</label>
+          <input
+            id="kanal"
+            type="text"
+            placeholder="Enter Kanal"
+            minlength="0"
+            ;
+            inputmode="decimal"
+            autocomplete="off"
+            maxlength="2"
+            ; />
 
-        <label>Marla</label>
-        <input
-          id="marla"
-          type="text"
-          placeholder="Enter Marla"
-          inputmode="decimal"
-          minlength="0"
-          ;
-          autocomplete="off"
-          maxlength="3"
-        />
+          <label>Marla</label>
+          <input
+            id="marla"
+            type="text"
+            placeholder="Enter Marla"
+            inputmode="decimal"
+            minlength="0"
+            ;
+            autocomplete="off"
+            maxlength="3" />
 
-        <label>Sirsai</label>
-        <input
-          id="sirsai"
-          type="text"
-          placeholder="Enter Sirsai"
-          minlength="0"
-          ;
-          inputmode="decimal"
-          autocomplete="off"
-          maxlength="4"
-        />
+          <label>Sirsai</label>
+          <input
+            id="sirsai"
+            type="text"
+            placeholder="Enter Sirsai"
+            minlength="0"
+            ;
+            inputmode="decimal"
+            autocomplete="off"
+            maxlength="4" />
 
-        <label>Square Feet</label>
-        <input
-          id="sqft"
-          type="text"
-          placeholder="Enter Square Feet"
-          minlength="0"
-          ;
-          inputmode="decimal"
-          autocomplete="off"
-          maxlength="4"
-        />
+          <label>Square Feet</label>
+          <input
+            id="sqft"
+            type="text"
+            placeholder="Enter Square Feet"
+            minlength="0"
+            ;
+            inputmode="decimal"
+            autocomplete="off"
+            maxlength="4" />
+        </div>
         <label>Service Charges</label>
         <input
           id="ServiceCharges"
@@ -133,8 +159,7 @@
           ;
           inputmode="decimal"
           autocomplete="off"
-          maxlength="6"
-        />
+          maxlength="6" />
 
         <label for>Choose Gender</label>
         <select id="gender">
@@ -212,11 +237,53 @@
             <td colspan="3" id="totalAmountPaid">0</td>
           </tr>
         </table>
-
         <button id="shareBtn">Share</button>
       </div>
     </div>
     <div id="backgroundOverlay"></div>
-    <script src="/JS/script.js" defer></script>
-  </body>
-</html>
+    <div id="backgroundOverlayNew"></div>
+    <!-- rent info popUp -->
+    <div class="rent-tables" id="rent-tables">
+      <button type="reset" id="Newreset">&#10006;</button>
+      <h2 class="result">Result</h2>
+
+      <table class="rent-table">
+        <tr>
+          <th>Years</th>
+          <th>Annual Rent</th>
+        </tr>
+        <tr>
+          <td id="rentYear">0</td>
+          <td id="annualrentOP">0</td>
+        </tr>
+      </table>
+
+      <table class="rent-table">
+        <tr>
+          <th>eStamp</th>
+          <th>Registration Fees</th>
+        </tr>
+        <tr>
+          <td id="rentfinalEstamp">0</td>
+          <td id="rentRegistration">0</td>
+        </tr>
+        <tr>
+          <th colspan="3">Service Charges</th>
+        </tr>
+        <tr>
+          <td colspan="3" id="Charge">0</td>
+        </tr>
+
+        <tr>
+          <th colspan="3">Total Amount</th>
+        </tr>
+
+        <tr>
+          <td colspan="3" id="totalAmountPaid">0</td>
+        </tr>
+      </table>
+
+      <script src="/JS/script.js" defer></script>
+      <script src="/JS/rent.js"></script>
+    </body>
+  </html>
