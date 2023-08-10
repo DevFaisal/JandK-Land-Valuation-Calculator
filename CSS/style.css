@@ -149,6 +149,7 @@ label {
   width: 70%;
   background-color: #f4d03f;
   background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
+
   padding: 10px;
   border-radius: 30px;
   position: absolute;
@@ -252,15 +253,18 @@ label {
 #navigation {
   align-self: center;
   display: flex;
-  background-color: rgb(255, 255, 255);
   font-size: large;
   font-weight: 500;
-  border-radius: 10px;
 }
 #navigation p {
+  width: 100px;
+  text-align: center;
+  background-color: rgb(241, 231, 134);
   align-items: center;
   padding: 15px;
   margin: 0px 10px 0px 10px;
+  border-radius: 30px;
+  margin: 5px;
 }
 #navigation p a {
   text-decoration: none;
