@@ -1,22 +1,6 @@
-const otherRent = document.getElementsByClassName("other-rent")[0];
-const rent = document.getElementsByClassName("rent")[0];
+const otherRent = document.querySelector(".other-rent");
+const rent = document.querySelector(".rent");
 const typeOfDeed = document.getElementById("typeOfDeed");
-
-otherRent.style.display = "flex";
-rent.style.display = "none";
-
-typeOfDeed.addEventListener('click', function () {
-
-    if (typeOfDeed.value === "rent") {
-        otherRent.style.display = "none";
-        rent.style.display = "flex";
-    } else {
-        otherRent.style.display = "flex";
-        rent.style.display = "none";
-    }
-});
-
-
 const years = document.getElementById("LeaseinYears");
 const Rent = document.getElementById("annualRent");
 const gender = document.getElementById("gender");
@@ -26,11 +10,12 @@ let regFee = 0.0;
 let eStamp = 0.0;
 let per = 0.0;
 
-
 Rent.focus();
-window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+window.scrollTo({ top: 0, behavior: "smooth" });
+
+typeOfDeed.addEventListener('click', function () {
+    otherRent.style.display = typeOfDeed.value === "rent" ? "none" : "flex";
+    rent.style.display = typeOfDeed.value === "rent" ? "flex" : "none";
 });
 
 calBtn.addEventListener('click', function () {
@@ -38,12 +23,18 @@ calBtn.addEventListener('click', function () {
 
     regFee = annualRent * 0.1 / 100;
 
-    if (gender.value === "Male") {
-        per = 0.07;
-    } else if (gender.value === "Female") {
-        per = 0.03;
-    } else if (gender.value === "Both") {
-        per = 0.05;
+    switch (gender.value) {
+        case "Male":
+            per = 0.07;
+            break;
+        case "Female":
+            per = 0.03;
+            break;
+        case "Both":
+            per = 0.05;
+            break;
+        default:
+            per = 0.0;
     }
 
     const leaseYears = parseInt(years.value);
@@ -63,56 +54,34 @@ calBtn.addEventListener('click', function () {
     const backgroundOverlay = document.querySelector("#backgroundOverlayNew");
     const resetBtn = document.querySelector("#Newreset");
 
-
-    if (typeOfDeed.value == "rent" && annualRent > 0) {
-        popupContainer.style.display = "flex";
-        backgroundOverlay.style.display = "block";
-        popupContainer.style.setProperty("opacity", "1");
-        popupContainer.style.setProperty("visibility", "visible");
-        backgroundOverlay.style.setProperty("opacity", "1");
-        backgroundOverlay.style.setProperty("visibility", "visible");
-
+    if (typeOfDeed.value === "rent" && annualRent > 0) {
+        popupContainer.style.cssText = "display: flex; opacity: 1; visibility: visible;";
+        backgroundOverlay.style.cssText = "display: block; opacity: 1; visibility: visible;";
     } else {
         Rent.focus();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    resetBtn.addEventListener("click", () => {
-        popupContainer.style.opacity = "0";
-        popupContainer.style.visibility = "hidden";
-        backgroundOverlay.style.opacity = "0";
-        backgroundOverlay.style.visibility = "hidden";
-    });
 
+    resetBtn.addEventListener("click", () => {
+        popupContainer.style.cssText = "opacity: 0; visibility: hidden;";
+        backgroundOverlay.style.cssText = "opacity: 0; visibility: hidden;";
+    });
 
     document.getElementById("rentYear").innerText = leaseYears;
     document.getElementById("annualrentOP").innerText = formatNumberWithCommas(annualRent);
     document.getElementById("rentfinalEstamp").innerText = formatNumberWithCommas(roundToNearestTen(eStamp));
     document.getElementById("rentRegistration").innerText = formatNumberWithCommas(roundToNearestTen(regFee));
-
 });
 
-
-
-
-
-
-
-//Function to get the Ten if the number is near to Ten
 function roundToNearestTen(number) {
     return Math.ceil(number / 10) * 10;
 }
 
-//Function for comma in Indian Currency
 function formatNumberWithCommas(number) {
-    return number
-        .toLocaleString("en-IN", {
-            style: "currency",
-            currency: "INR",
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 2,
-        })
-        .replace(/\.00$/, "");
+    return number.toLocaleString("en-IN", {
+        style: "currency",
+        currency: "INR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+    }).replace(/\.00$/, "");
 }
