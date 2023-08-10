@@ -9,7 +9,7 @@ typeOfDeed.addEventListener('change', function () {
     if (typeOfDeed.value === "rent") {
         rent.style.display = "flex";
         otherRent.style.display = "none";
-        years.focus();
+        // years.focus();
 
         // years.focus();
         // window.scrollTo({
