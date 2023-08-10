@@ -9,11 +9,13 @@ typeOfDeed.addEventListener('change', function () {
     if (typeOfDeed.value === "rent") {
         rent.style.display = "flex";
         otherRent.style.display = "none";
+
         years.focus();
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
+
     } else {
         rent.style.display = "none";
         otherRent.style.display = "flex";
@@ -24,6 +26,7 @@ const years = document.getElementById("LeaseinYears");
 const Rent = document.getElementById("annualRent");
 const gender = document.getElementById("gender");
 const calBtn = document.getElementById("calBtn");
+
 
 let regFee = 0.0;
 let eStamp = 0.0;
@@ -58,6 +61,8 @@ calBtn.addEventListener('click', function () {
     const popupContainer = document.querySelector("#rent-tables");
     const backgroundOverlay = document.querySelector("#backgroundOverlayNew");
     const resetBtn = document.querySelector("#Newreset");
+    const sC = document.getElementById("ServiceCharges");
+    let serviceCharge = parseFloat(sC.value) || 0;
 
 
     if (typeOfDeed.value == "rent" && annualRent > 0) {
@@ -83,10 +88,18 @@ calBtn.addEventListener('click', function () {
     });
 
 
+    let totalAmountToBePaid = roundToNearestTen(
+        regFee + serviceCharge + eStamp
+    );
+
+
     document.getElementById("rentYear").innerText = leaseYears;
     document.getElementById("annualrentOP").innerText = formatNumberWithCommas(annualRent);
     document.getElementById("rentfinalEstamp").innerText = formatNumberWithCommas(roundToNearestTen(eStamp));
     document.getElementById("rentRegistration").innerText = formatNumberWithCommas(roundToNearestTen(regFee));
+    document.getElementById("rentCharge").innerText = formatNumberWithCommas(serviceCharge);
+    document.getElementById("renttotalAmountPaid").innerText = formatNumberWithCommas(totalAmountToBePaid);
+    console.log(serviceCharge);
 
 });
 
