@@ -15,7 +15,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: whitesmoke;
 }
 
 .container {
@@ -98,7 +97,10 @@ h2 {
   text-align: center;
   color: #f1f1f1;
   font-weight: bold;
+}
+#info {
   margin-bottom: 20px;
+  font-weight: 400;
 }
 #result {
   margin: 10px;
