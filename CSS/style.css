@@ -8,22 +8,23 @@
 
 body {
   padding: 0;
-  height: 100vh;
+  height: 150vh;
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: whitesmoke;
 }
 
 .container {
+  height: 100%;
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: #45b9fc;
+  background-color: #215021;
   padding: 10%;
+  border-radius: 50px;
 }
 
 .form {
@@ -53,9 +54,10 @@ header {
   display: flex;
   justify-content: center;
   text-align: center;
-  font-size: 20px;
-  margin-top: 0px;
-  font-weight: 600;
+  font-size: 12px;
+  margin: 5px 40px;
+  font-weight: 400;
+  color: #64686b;
 }
 
 .top-head-jk {
@@ -66,7 +68,7 @@ header {
 .devinfo {
   font-size: 12px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
   color: rgb(182, 182, 178);
 }
 
@@ -126,7 +128,7 @@ label {
   flex-direction: column;
   width: 70%;
   background-color: #f4d03f;
-  background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
+  background-image: linear-gradient(132deg, #116600 0%, #16a085 100%);
 
   padding: 30px;
   border-radius: 30px;
@@ -148,7 +150,7 @@ label {
   flex-direction: column;
   width: 70%;
   background-color: #f4d03f;
-  background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
+  background-image: linear-gradient(132deg, #116600 0%, #16a085 100%);
 
   padding: 10px;
   border-radius: 30px;
@@ -259,7 +261,7 @@ label {
 #navigation p {
   width: 100px;
   text-align: center;
-  background-color: rgb(241, 231, 134);
+  background-color: rgb(198, 231, 176);
   align-items: center;
   padding: 15px;
   margin: 0px 10px 0px 10px;
