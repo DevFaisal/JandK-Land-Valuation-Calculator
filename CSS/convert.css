@@ -8,7 +8,7 @@
 
 body {
   padding: 0;
-  height: 100vh;
+  height: 150vh;
 }
 
 header {
@@ -18,13 +18,13 @@ header {
 }
 
 .container {
-  height: 80%;
+  height: 100%;
   width: auto;
   display: flex;
   flex-direction: column;
   background-color: #215021;
   padding: 10%;
-  border-radius: 50px;
+  border-radius: 50px 50px 0px 0px;
 }
 
 label {
@@ -51,6 +51,7 @@ label {
 }
 #navigation p a {
   text-decoration: none;
+  color: black;
 }
 #convBtn {
   padding: 6px 10px;
@@ -134,6 +135,7 @@ input:hover {
   body {
     width: auto;
     padding: 0;
+    height: 100vh;
   }
 
   .head {

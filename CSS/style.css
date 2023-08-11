@@ -8,7 +8,7 @@
 
 body {
   padding: 0;
-  height: 150vh;
+  height: 200vh;
 }
 
 header {
@@ -24,7 +24,7 @@ header {
   flex-direction: column;
   background-color: #215021;
   padding: 10%;
-  border-radius: 50px;
+  border-radius: 50px 50px 0px 0px;
 }
 
 .form {
@@ -270,6 +270,7 @@ label {
 }
 #navigation p a {
   text-decoration: none;
+  color: black;
 }
 #finalEstamp {
   color: #18566e;
