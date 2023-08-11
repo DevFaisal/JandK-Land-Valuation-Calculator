@@ -298,6 +298,7 @@ label {
   body {
     width: auto;
     padding: 0;
+    height: 80%;
   }
 
   .head {
