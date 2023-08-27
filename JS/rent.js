@@ -90,9 +90,7 @@ calBtn.addEventListener('click', function () {
 
     let finalregFee = parseInt(roundToNearestTen(regFee));
 
-    let totalAmountToBePaid = roundToNearestTen(
-        finalregFee + serviceCharge + eStamp
-    );
+    let totalAmountToBePaid = finalregFee + serviceCharge + eStamp;
 
 
     document.getElementById("rentYear").innerText = leaseYears;
@@ -103,9 +101,7 @@ calBtn.addEventListener('click', function () {
     document.getElementById("renttotalAmountPaid").innerText = formatNumberWithCommas(totalAmountToBePaid);
 
 
-    console.log("Reg Fee", finalregFee);
-    console.log("eStamp ", eStamp);
-    console.log("Sc", serviceCharge);
+    console.log("Check Result")
 
 });
 
