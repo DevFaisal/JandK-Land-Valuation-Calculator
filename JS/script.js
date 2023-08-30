@@ -31,9 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let final = Math.floor(addVal);
 
     eStamp = (final * deedPercentages.percenOfEstamp) / 100;
-
-    let totalEstampValue = roundToNearestTen(eStamp);
+    console.log(eStamp)
+    let totalEstampValue = Math.round(eStamp);
     let registationFee = (final * deedPercentages.percenOfReg) / 100;
+    console.log(totalEstampValue)
 
 
     if (typeOfDeed.value === "gift" && registationFee >= 10000) {
@@ -146,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     totalEstampValue,
     registationFee,
   ) {
+
     document.getElementById("kanalOutput").innerText = kanal.value || 0;
     document.getElementById("marlaOutput").innerText = marla.value || 0;
     document.getElementById("sirsaiOutput").innerText = sirsai.value || 0;
@@ -156,16 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNaN(valuation)) {
       valuation = 0;
     }
-
+    let roundStamp = roundToNearestTen(totalEstampValue)
     let totalCostOfLand = formatNumberWithCommas(onlyLand);
-    let finalEstamp = formatNumberWithCommas(totalEstampValue);
+    let finalEstamp = formatNumberWithCommas(roundStamp);
     let totalResgitationFee = formatNumberWithCommas(
       roundToNearestTen(registationFee)
     );
 
-    let totalAmountToBePaid = roundToNearestTen(
-      registationFee + totalEstampValue + serviceCharge
-    );
+    console.log("Final " + finalEstamp)
+    let totalAmountToBePaid = registationFee + roundStamp + serviceCharge;
     let govtRate = parseInt(perKanalRate.value) || 0;
 
     document.getElementById("TotatCostLand").innerText = totalCostOfLand;
