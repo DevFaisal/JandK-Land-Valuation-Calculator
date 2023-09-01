@@ -161,12 +161,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let roundStamp = roundToNearestTen(totalEstampValue)
     let totalCostOfLand = formatNumberWithCommas(onlyLand);
     let finalEstamp = formatNumberWithCommas(roundStamp);
-    let totalResgitationFee = formatNumberWithCommas(
-      roundToNearestTen(registationFee)
-    );
+    let regFeeInt = roundToNearestTen(registationFee);
+    let totalResgitationFee = formatNumberWithCommas(regFeeInt);
+
 
     console.log("Final " + finalEstamp)
-    let totalAmountToBePaid = registationFee + roundStamp + serviceCharge;
+    let totalAmountToBePaid = regFeeInt + roundStamp + serviceCharge;
     let govtRate = parseInt(perKanalRate.value) || 0;
 
     document.getElementById("TotatCostLand").innerText = totalCostOfLand;
@@ -248,10 +248,12 @@ function getTableInfo() {
   const consideration = document.getElementById("consideration").innerText;
   const serviceCharge = document.getElementById("Charge").innerText;
   const totalAmountPaid = document.getElementById("totalAmountPaid").innerText;
+  const typeOfDeed = document.getElementById("typeOfDeed").value;
 
   // Construct the table information string
   const tableInfo = ` 
   *FINAL VALUATION SUMMARY*
+  Type : ${typeOfDeed} Deed
   --------------------------------
   *Land Information*
     Kanal: ${kanalValue}
