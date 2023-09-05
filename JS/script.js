@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       landValues.sirsaiValue +
       landValues.sQftValue;
 
-    let onlyLand = Math.floor(result);
+    let onlyLand = Math.round(result);
 
     let addVal = result + valuation;
     let final = Math.floor(addVal);
