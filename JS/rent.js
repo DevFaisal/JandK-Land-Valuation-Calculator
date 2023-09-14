@@ -89,13 +89,14 @@ calBtn.addEventListener('click', function () {
     });
 
     let finalregFee = parseInt(roundToNearestTen(regFee));
+    const finalEstamp = parseInt(roundToNearestTen(eStamp))
 
-    let totalAmountToBePaid = finalregFee + serviceCharge + eStamp;
+    let totalAmountToBePaid = finalregFee + serviceCharge + finalEstamp;
 
 
     document.getElementById("rentYear").innerText = leaseYears;
     document.getElementById("annualrentOP").innerText = formatNumberWithCommas(annualRent);
-    document.getElementById("rentfinalEstamp").innerText = formatNumberWithCommas(eStamp);
+    document.getElementById("rentfinalEstamp").innerText = formatNumberWithCommas(finalEstamp);
     document.getElementById("rentRegistration").innerText = formatNumberWithCommas(finalregFee);
     document.getElementById("rentCharge").innerText = formatNumberWithCommas(serviceCharge);
     document.getElementById("renttotalAmountPaid").innerText = formatNumberWithCommas(totalAmountToBePaid);
@@ -104,10 +105,6 @@ calBtn.addEventListener('click', function () {
     console.log("Check Result")
 
 });
-
-
-
-
 
 
 
