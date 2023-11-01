@@ -88,6 +88,7 @@ calBtn.addEventListener('click', function () {
         backgroundOverlay.style.visibility = "hidden";
     });
 
+    eStamp = Math.round(eStamp)
     let finalregFee = parseInt(roundToNearestTen(regFee));
     const finalEstamp = parseInt(roundToNearestTen(eStamp))
 
