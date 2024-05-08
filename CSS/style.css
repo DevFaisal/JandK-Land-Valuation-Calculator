@@ -22,7 +22,7 @@ header {
   width: auto;
   display: flex;
   flex-direction: column;
-  background-color: #215021;
+  background-color: #5856c6;
   padding: 10%;
   border-radius: 50px 50px 0px 0px;
 }
@@ -61,7 +61,7 @@ header {
 }
 
 .top-head-jk {
-  color: #006400;
+  color: #2d0064;
   margin-top: 5px;
 }
 
@@ -128,8 +128,7 @@ label {
   flex-direction: column;
   width: 70%;
   background-color: #f4d03f;
-  background-image: linear-gradient(132deg, #116600 0%, #16a085 100%);
-
+  background-image: linear-gradient(132deg, #2d0064 0%, #6a35ab 80%);
   padding: 30px;
   border-radius: 30px;
   position: absolute;
@@ -148,10 +147,9 @@ label {
 #rent-tables {
   display: none;
   flex-direction: column;
-  width: 70%;
+  width: auto;
   background-color: #f4d03f;
-  background-image: linear-gradient(132deg, #116600 0%, #16a085 100%);
-
+  background-image: linear-gradient(132deg, #2d0064 0%, #6a35ab 80%);
   padding: 10px;
   border-radius: 30px;
   position: absolute;
@@ -335,4 +333,14 @@ label {
 }
 .other-rent {
   flex-direction: column;
+}
+
+@media screen and (min-width: 767px) {
+  .all-tables {
+    width: 30%;
+    padding: 10px 15px;
+  }
+  .table td {
+    padding: 2%;
+  }
 }
