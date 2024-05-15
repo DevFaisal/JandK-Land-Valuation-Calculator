@@ -1,21 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="Icon/ic.png" type="image/x-icon" />
-        <link rel="stylesheet" href="CSS/convert.css" />
-        <title>Valuation Calculator</title>
-    </head>
-    <body>
-        <header>
-            <div class="container-one">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="Icon/ic.png" type="image/x-icon" />
+    <link rel="stylesheet" href="CSS/convert.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Valuation Calculator</title>
+  </head>
+  <body>
+    <nav class="flex bg-green-600 justify-between items-center py-4 px-2">
+      <div class="logo">
+        <h4 class="text-md font-semibold bg-yellow-400 rounded-md p-1 px-3">
+          LandMetric Master
+        </h4>
+      </div>
+      <ul class="flex gap-3">
+        <li>
+          <a class="text-sm text-gray-300 font-semibold" href="/index.html"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a class="text-sm text-gray-300 font-semibold" href="/converter.html"
+            >Converter</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="container mx-auto flex flex-col items-center h-screen justify-start"
+    >
+      <div class="mt-4 flex flex-col justify-center items-center mb-20">
+        <p class="md:text-xl text-sm py-2 px-2 text-center">
+          Simplify Property Transactions with Accurate Land Measurement
+          Conversion and Transaction Fee Calculation
+        </p>
+        <span class="md:text-xl text-xs px-2 bg-gray-100 p-1">
+          Developed by :
+          <a
+            class="text-blue-500"
+            href="https://www.linkedin.com/in/dev-faisal/"
+            >Faisal Farooq</a
+          >
+        </span>
+      </div>
 
-                <h2 class="top-head-jk">LandMetric Master</h2>
-                <p class="top-head">Simplify Property Transactions with Accurate
-                    Land Measurement Conversion and Transaction Fee Calculation</p>
-                <h4 class="devinfo">
+      <div class="flex gap-3 flex-col justify-center items-center">
+        <div class="md:w-1/2 w-screen px-4">
+          <div
+            class="flex gap-3 justify-between bg-yellow-400 rounded-md px-5 py-3"
+          >
+            <div class="flex flex-col">
+              <label class="text-md font-semibold" for="fromValue"
+                >Enter Land</label
+              >
+              <input
+                class="px-2 py-1 rounded-md"
+                type="number"
+                id="fromValue"
+                placeholder="Enter value"
+              />
+            </div>
+            <div class="flex flex-col">
+              <label class="text-md font-semibold" for="fromUnit"
+                >From Unit</label
+              >
+              <select class="py-1 rounded-md" id="fromUnit">
+                <option value="kanal">Kanal</option>
+                <option value="marla">Marla</option>
+                <option value="sirsai">Sirsai</option>
+                <option value="sqft">Sqft</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3 bg-gray-100 w-screen px-4">
+          <div
+            class="flex gap-3 w-96 justify-between items-between bg-green-300 p-4 rounded-md"
+          >
+            <h1>Kanal</h1>
+            <p class="text-md font-semibold" id="kanalResult">0.00</p>
+          </div>
+          <div
+            class="flex gap-3 justify-between items-between bg-green-300 p-4 rounded-md"
+          >
+            <h1>Marls</h1>
+            <p class="text-md font-semibold" id="marlaResult">0.00</p>
+          </div>
+          <div
+            class="flex gap-3 justify-between items-between bg-green-300 p-4 rounded-md"
+          >
+            <h1>Sirsai</h1>
+            <p class="text-md font-semibold" id="sirsaiResult">0.00</p>
+          </div>
+          <div
+            class="flex gap-3 justify-between items-between bg-green-300 p-4 rounded-md"
+          >
+            <h1>Sqft</h1>
+            <p class="text-md font-semibold" id="sqftResult">0.00</p>
+          </div>
+          <button
+            class="bg-blue-500 w-full text-white px-4 py-2 my-2 rounded-md"
+            onclick="finalConversion()"
+          >
+            Evaluate
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/JS/convert.js"></script>
+</html>
+
+<!-- 
+        <header>
+
+    
+                <h2>LandMetric Master</h2>
+                
+                <h4 >
                     Developed by :
                     <a href="https://www.linkedin.com/in/dev-faisal/">Faisal
                         Farooq</a>
@@ -23,11 +132,12 @@
             </header>
 
             <div class="container">
-                <div id="navigation">
+                <nav id="navigation">
                     <p><a href="/index.html">Home</a></p>
                     <p><a href="/converter.html">Converter</a></p>
-                </div>
+                </nav>
                 <br>
+            
                 <h2 id="info">Land Value Converter</h2>
                 <label for="fromValue">Enter Value:</label>
                 <input type="number" id="fromValue" placeholder="Enter value" />
@@ -47,9 +157,7 @@
                 </select>
                 <button id="convBtn" onclick="convert()">Convert</button>
             </br>
+                <h1>Hello</h1>
             <p id="result"></p>
             <h4 class="devinfo">For any Queries Call <b>+91 9622827634</b></h4>
-        </div>
-        <script src="/JS/convert.js"></script>
-    </body>
-</html>
+            </div> -->
