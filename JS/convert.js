@@ -64,43 +64,34 @@ function SqftConvertor(SqftValue) {
   };
 }
 
-function finalConversion() {
-  const fromValue = document.getElementById("fromValue").value; //1 kanal
-  const fromUnit = document.getElementById("fromUnit").value; //kanal
-  let toUnit = document.getElementById("fromUnit").value;
-  //   console.log(fromValue, fromUnit, toUnit);
-  let kanalResult = 0;
-  let marlaResult = 0;
-  let sirsaiResult = 0;
-  let sqftResult = 0;
+function UnitConversion(fromValue, fromUnit) {
+  let kanalResult = convert(fromValue, fromUnit, "kanal");
+  let marlaResult = convert(fromValue, fromUnit, "marla");
+  let sirsaiResult = convert(fromValue, fromUnit, "sirsai");
+  let sqftResult = convert(fromValue, fromUnit, "sqft");
 
-  if (fromUnit == "kanal") {
-    kanalResult = convert(fromValue, fromUnit, toUnit);
-    marlaResult = convert(fromValue, fromUnit, "marla");
-    sirsaiResult = convert(fromValue, fromUnit, "sirsai");
-    sqftResult = convert(fromValue, fromUnit, "sqft");
-  }
-  if (fromUnit == "marla") {
-    kanalResult = convert(fromValue, fromUnit, "kanal");
-    marlaResult = convert(fromValue, fromUnit, toUnit);
-    sirsaiResult = convert(fromValue, fromUnit, "sirsai");
-    sqftResult = convert(fromValue, fromUnit, "sqft");
-  }
-  if (fromUnit == "sirsai") {
-    kanalResult = convert(fromValue, fromUnit, "kanal");
-    marlaResult = convert(fromValue, fromUnit, "marla");
-    sirsaiResult = convert(fromValue, fromUnit, toUnit);
-    sqftResult = convert(fromValue, fromUnit, "sqft");
-  }
-  if (fromUnit == "sqft") {
-    kanalResult = convert(fromValue, fromUnit, "kanal");
-    marlaResult = convert(fromValue, fromUnit, "marla");
-    sirsaiResult = convert(fromValue, fromUnit, "sirsai");
-    sqftResult = convert(fromValue, fromUnit, toUnit);
-  }
-  console.log(kanalResult, marlaResult, sirsaiResult, sqftResult);
   document.getElementById("kanalResult").innerText = kanalResult;
   document.getElementById("marlaResult").innerText = marlaResult;
   document.getElementById("sirsaiResult").innerText = sirsaiResult;
   document.getElementById("sqftResult").innerText = sqftResult;
+}
+
+function collectConversion() {
+  const kanalValue = document.getElementById("kanalValue").value;
+  const marlaValue = document.getElementById("marlaValue").value;
+  const sirsaiValue = document.getElementById("sirsaiValue").value;
+  const sqftValue = document.getElementById("sqftValue").value;
+
+  const convertedKanalValue = kanalCovertor(kanalValue)["sqft"];
+  const convertedMarlaValue = marlaConvertor(marlaValue)["sqft"];
+  const convertedSirsaiValue = sirsaiConvertor(sirsaiValue)["sqft"];
+  const convertedSqftValue = SqftConvertor(sqftValue)["sqft"];
+
+  const totalSqft =
+    convertedKanalValue +
+    convertedMarlaValue +
+    convertedSirsaiValue +
+    convertedSqftValue;
+
+  UnitConversion(totalSqft, "sqft");
 }
