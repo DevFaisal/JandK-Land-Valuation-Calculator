@@ -1,70 +1,71 @@
 function convert(fromValue, fromUnit, toUnit) {
-  let result = 0;
   let conversionFunction;
 
   switch (fromUnit) {
     case "kanal":
-      conversionFunction = kanalCovertor;
+      conversionFunction = kanalConverter;
       break;
     case "marla":
-      conversionFunction = marlaConvertor;
+      conversionFunction = marlaConverter;
       break;
     case "sirsai":
-      conversionFunction = sirsaiConvertor;
+      conversionFunction = sirsaiConverter;
       break;
     case "sqft":
-      conversionFunction = SqftConvertor;
+      conversionFunction = sqftConverter;
       break;
     default:
-      break;
+      throw new Error("Unsupported unit");
   }
 
   if (conversionFunction) {
     const convertedValues = conversionFunction(fromValue);
-    result = convertedValues[toUnit];
+    if (convertedValues[toUnit] === undefined) {
+      throw new Error("Conversion to target unit not supported");
+    }
+    return parseFloat(convertedValues[toUnit]).toFixed(2);
   }
 
-  const final = parseFloat(result).toFixed(2);
-  return final;
+  throw new Error("Conversion function not found");
 }
 
-function kanalCovertor(KanalValue) {
+function kanalConverter(kanalValue) {
   return {
-    kanal: KanalValue,
-    marla: KanalValue * 20,
-    sirsai: KanalValue * 180,
-    sqft: KanalValue * 5445,
+    kanal: kanalValue,
+    marla: kanalValue * 20,
+    sirsai: kanalValue * 180,
+    sqft: kanalValue * 5445,
   };
 }
 
-function marlaConvertor(MarlaValue) {
+function marlaConverter(marlaValue) {
   return {
-    kanal: MarlaValue * 0.05,
-    marla: MarlaValue,
-    sirsai: MarlaValue * 9,
-    sqft: MarlaValue * 272.25,
+    kanal: marlaValue * 0.05,
+    marla: marlaValue,
+    sirsai: marlaValue * 9,
+    sqft: marlaValue * 272.25,
   };
 }
 
-function sirsaiConvertor(SirsaiValue) {
+function sirsaiConverter(sirsaiValue) {
   return {
-    kanal: SirsaiValue * 0.0055555555555556,
-    marla: SirsaiValue * 0.11111111111111,
-    sirsai: SirsaiValue,
-    sqft: SirsaiValue * 30.25,
+    kanal: sirsaiValue * 0.0055555555555556,
+    marla: sirsaiValue * 0.11111111111111,
+    sirsai: sirsaiValue,
+    sqft: sirsaiValue * 30.25,
   };
 }
 
-function SqftConvertor(SqftValue) {
+function sqftConverter(sqftValue) {
   return {
-    kanal: SqftValue * 0.00018365472910927,
-    marla: SqftValue * 0.0036730945821855,
-    sirsai: SqftValue * 0.033057851239669,
-    sqft: SqftValue,
+    kanal: sqftValue * 0.00018365472910927,
+    marla: sqftValue * 0.0036730945821855,
+    sirsai: sqftValue * 0.033057851239669,
+    sqft: sqftValue,
   };
 }
 
-function UnitConversion(fromValue, fromUnit) {
+function unitConversion(fromValue, fromUnit) {
   let kanalResult = convert(fromValue, fromUnit, "kanal");
   let marlaResult = convert(fromValue, fromUnit, "marla");
   let sirsaiResult = convert(fromValue, fromUnit, "sirsai");
@@ -77,15 +78,18 @@ function UnitConversion(fromValue, fromUnit) {
 }
 
 function collectConversion() {
-  const kanalValue = document.getElementById("kanalValue").value;
-  const marlaValue = document.getElementById("marlaValue").value;
-  const sirsaiValue = document.getElementById("sirsaiValue").value;
-  const sqftValue = document.getElementById("sqftValue").value;
+  const kanalValue =
+    parseFloat(document.getElementById("kanalValue").value) || 0;
+  const marlaValue =
+    parseFloat(document.getElementById("marlaValue").value) || 0;
+  const sirsaiValue =
+    parseFloat(document.getElementById("sirsaiValue").value) || 0;
+  const sqftValue = parseFloat(document.getElementById("sqftValue").value) || 0;
 
-  const convertedKanalValue = kanalCovertor(kanalValue)["sqft"];
-  const convertedMarlaValue = marlaConvertor(marlaValue)["sqft"];
-  const convertedSirsaiValue = sirsaiConvertor(sirsaiValue)["sqft"];
-  const convertedSqftValue = SqftConvertor(sqftValue)["sqft"];
+  const convertedKanalValue = kanalConverter(kanalValue).sqft;
+  const convertedMarlaValue = marlaConverter(marlaValue).sqft;
+  const convertedSirsaiValue = sirsaiConverter(sirsaiValue).sqft;
+  const convertedSqftValue = sqftConverter(sqftValue).sqft;
 
   const totalSqft =
     convertedKanalValue +
@@ -93,5 +97,5 @@ function collectConversion() {
     convertedSirsaiValue +
     convertedSqftValue;
 
-  UnitConversion(totalSqft, "sqft");
+  unitConversion(totalSqft, "sqft");
 }
